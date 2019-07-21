@@ -7,4 +7,4 @@ import random
 jsonFile = open('test.json')
 students = json.load(jsonFile)
 
-print(len(students))
+print((students[2]))

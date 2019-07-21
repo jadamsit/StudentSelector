@@ -13,14 +13,15 @@ def getRandomStudent(students):
 
 # 1. Create the Layout
 layout = [  [sg.Image('images/placeholder.png',size=[340,340],key='image')],
-            [sg.Text('',key='name')],
+            [sg.Text('_______________', auto_size_text = True, font=["Comic Sans",22],justification="center", pad=(80,0), key='name')],
+            [sg.Text('')],
             [sg.Button('Pick Student',pad=(120,0),size=[12,3])],
             [sg.Text('')],
             [sg.Button('Count as Present',pad=(117,0))]
             ]
 
 # 2. Create the Window
-window = sg.Window('Student Selector',text_justification='center').Layout(layout)
+window = sg.Window('Student Selector',text_justification='center',resizable=True).Layout(layout)
 
 
 # 3. event loop
@@ -36,6 +37,7 @@ while True:
         students = readJSON()
         currentStudent = getRandomStudent(students)
         window.FindElement('image').Update(students[currentStudent]["image"])
+        window.FindElement('name').Update(students[currentStudent]["name"])
 
     elif button == 'Count as Present':
         print('goodbye')
